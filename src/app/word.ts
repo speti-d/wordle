@@ -1,6 +1,6 @@
 export interface Letter {
     letter: string;
-    correct?: boolean;
+    correct?: string;
 }
 
 export interface Word {

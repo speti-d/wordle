@@ -9,3 +9,16 @@ li {
     border: solid black 2px;
     padding: 1em;
 }
+
+.correct {
+    background-color: greenyellow;
+    rotate: y 360deg;
+}
+.in_word {
+    background-color: orange;
+    rotate: y 360deg;
+}
+.not_in_word {
+    background-color: gray;
+    rotate: y 360deg;
+}
