@@ -1,3 +1,4 @@
+<button type="button" *ngIf="game_over" (click)="reloadPage()" >Retry?</button>
 <app-word *ngFor="let word of words"
     [word]="word">
 </app-word>

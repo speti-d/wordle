@@ -115,4 +115,8 @@ export class GameComponent {
     this.words[this.index].letters = []
   }
 
+  reloadPage(): void {
+    window.location.reload();
+  }
+
 }
