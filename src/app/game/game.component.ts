@@ -33,7 +33,6 @@ export class GameComponent {
     ];
 
     this.wordActual = WORDS[Math.floor(Math.random() * 8886)].toUpperCase();
-    debugger;
   }
 
   @HostListener('document:keypress', ['$event'])
@@ -93,8 +92,8 @@ export class GameComponent {
         letter.correct = this.inWord.not_in_word;
         word_is_correct = false;
       };
-      this.checkGameEnd(word_is_correct);
     });
+    this.checkGameEnd(word_is_correct);
   }
 
   isValidWord(word: Word): boolean {
