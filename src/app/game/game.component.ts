@@ -77,17 +77,19 @@ export class GameComponent {
   compareWords(): void {
 
     let word_is_correct: boolean = true;
+    let tmp_word: string[] = this.wordActual.split(''); // temporary array to hold words of letter in order
 
     this.words[this.index].letters.forEach((letter, index) => {
       // Check if letter is in actual word
-      if (this.wordActual.includes(letter.letter)) {
+      if (tmp_word.includes(letter.letter)) {
         //Check if letter is in the correct spot
-        if (letter.letter === this.wordActual[index]) {
+        if (letter.letter === tmp_word[index]) {
           letter.correct = this.inWord.correct 
         } else {
           letter.correct = this.inWord.in_word
           word_is_correct = false;
         }
+        tmp_word[tmp_word.indexOf(letter.letter)] = ''; // remove letter if matched at all
       } else {
         letter.correct = this.inWord.not_in_word;
         word_is_correct = false;
