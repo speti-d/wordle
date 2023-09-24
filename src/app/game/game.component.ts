@@ -2,6 +2,8 @@ import { Component, HostListener } from '@angular/core';
 
 import { Word, Letter } from '../word';
 
+import { WORDS } from '../word_list';
+
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
@@ -10,7 +12,7 @@ import { Word, Letter } from '../word';
 export class GameComponent {
   words: Word[];
   index: number = 0;
-  wordActual: string = "teszt".toUpperCase();
+  wordActual: string;
   game_over: boolean = false;
 
   readonly inWord = {
@@ -29,12 +31,15 @@ export class GameComponent {
       {letters: []},
       {letters: []},
     ];
+
+    this.wordActual = WORDS[Math.floor(Math.random() * 8886)].toUpperCase();
+    debugger;
   }
 
   @HostListener('document:keypress', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
     if (event.key === 'Enter' && !this.game_over) {
-      if ( this.words[this.index].letters.length === 5 )
+      if ( this.words[this.index].letters.length === 5 && this.isValidWord(this.words[this.index]))
       {
         this.compareWords();
         this.index += 1;
@@ -55,7 +60,7 @@ export class GameComponent {
     };
   }
 
-    isAlpha(character: string): boolean {
+  isAlpha(character: string): boolean {
     return /^[a-zA-Z]$/.test(character)
   }
 
@@ -90,6 +95,12 @@ export class GameComponent {
       };
       this.checkGameEnd(word_is_correct);
     });
+  }
+
+  isValidWord(word: Word): boolean {
+    let tmp: string = word.letters.map((letter): string => {return letter.letter}).join('').toLowerCase();
+    debugger;
+    return WORDS.includes(tmp);
   }
 
   addLetter(newLetter: string): void {
