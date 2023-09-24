@@ -5,12 +5,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { WordComponent } from './word/word.component';
 import { LetterComponent } from './letter/letter.component';
+import { GameComponent } from './game/game.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WordComponent,
-    LetterComponent
+    LetterComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule,
